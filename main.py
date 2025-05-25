@@ -7,7 +7,7 @@ def appconfig():
     # POST https://dealerapp.siriusxm.com/authService/100000002/appconfig
 
     try:
-        response = requests.post(
+        response = session.post(
             url="https://dealerapp.siriusxm.com/authService/100000002/appconfig",
             headers={
                 "X-Kony-Integrity":
@@ -34,7 +34,7 @@ def login():
     # POST https://dealerapp.siriusxm.com/authService/100000002/login
 
     try:
-        response = requests.post(
+        response = session.post(
             url="https://dealerapp.siriusxm.com/authService/100000002/login",
             headers={
                 "X-Voltmx-Platform-Type": "ios",
@@ -48,6 +48,7 @@ def login():
                 "X-Voltmx-SDK-Version": "9.5.36",
                 "X-Voltmx-App-Key": "67cfe0220c41a54cb4e768723ad56b41",
             },
+            data={'name': 'username', 'password': 'password'}
         )
         return response.json().get('claims_token').get('value')
         #print('Response HTTP Status Code: {status_code}'.format(
@@ -63,7 +64,7 @@ def versionControl():
     # POST https://dealerapp.siriusxm.com/services/DealerAppService7/VersionControl
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/DealerAppService7/VersionControl",
             headers={
@@ -99,7 +100,7 @@ def getProperties():
     # POST https://dealerapp.siriusxm.com/services/DealerAppService7/getProperties
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/DealerAppService7/getProperties",
             headers={
@@ -127,7 +128,7 @@ def update_1():
     # POST https://dealerapp.siriusxm.com/services/USUpdateDeviceSATRefresh/updateDeviceSATRefreshWithPriority
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/USUpdateDeviceSATRefresh/updateDeviceSATRefreshWithPriority",
             headers={
@@ -165,7 +166,7 @@ def getCRM():
     # POST https://dealerapp.siriusxm.com/services/DemoConsumptionRules/GetCRMAccountPlanInformation
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/DemoConsumptionRules/GetCRMAccountPlanInformation",
             headers={
@@ -197,7 +198,7 @@ def dbUpdate():
     # POST https://dealerapp.siriusxm.com/services/DBSuccessUpdate/DBUpdateForGoogle
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/DBSuccessUpdate/DBUpdateForGoogle",
             headers={
@@ -237,7 +238,7 @@ def blocklist():
     # POST https://dealerapp.siriusxm.com/services/USBlockListDevice/BlockListDevice
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/USBlockListDevice/BlockListDevice",
             headers={
@@ -268,7 +269,7 @@ def oracle():
     # POST https://oemremarketing.custhelp.com/cgi-bin/oemremarketing.cfg/php/custom/src/oracle/program_status.php
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://oemremarketing.custhelp.com/cgi-bin/oemremarketing.cfg/php/custom/src/oracle/program_status.php",
             params={
@@ -296,7 +297,7 @@ def createAccount():
     # POST https://dealerapp.siriusxm.com/services/DealerAppService3/CreateAccount
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/DealerAppService3/CreateAccount",
             headers={
@@ -330,7 +331,7 @@ def update_2():
     # POST https://dealerapp.siriusxm.com/services/USUpdateDeviceRefreshForCC/updateDeviceSATRefreshWithPriority
 
     try:
-        response = requests.post(
+        response = session.post(
             url=
             "https://dealerapp.siriusxm.com/services/USUpdateDeviceRefreshForCC/updateDeviceSATRefreshWithPriority",
             headers={
@@ -362,7 +363,7 @@ def update_2():
         print('HTTP Request failed')
 
 
-requests = requests.Session()
+session = requests.Session()
 radio_id_input = input("Enter Radio ID: ")
 radio_id_input = radio_id_input.upper()
 uuid4 = str(uuid.uuid4())
